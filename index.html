@@ -16,6 +16,8 @@
 
     <!-- CSS
     ================================================== -->
+    <link rel="stylesheet" type="text/css" href="smoke/smoke.css">
+  <link id="theme" rel="stylesheet" href="smoke/themes/100s.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="stylesheets/skeleton.css">
     <link rel="stylesheet" href="stylesheets/layout.css">
     <!-- prettyPhoto CSS file -->
@@ -55,6 +57,14 @@
 	<!-- Contact Form -->
     <script src="js/contact_form.js" type="text/javascript"></script>
     <!-- JS Settings -->
+    <script src="smoke/smoke.min.js" type="text/javascript"></script>
+      <script type="text/javascript">
+    if (window.location.hash === '#rsvp') {
+        smoke.signal('Your RSVP has been confirmed.');
+        //window.location.href = '';
+    }
+  </script>
+
     <script src="js/main.js"></script>    
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -76,7 +86,8 @@
 				<li data-slide="2">Our Story</li>
 				<li data-slide="3">Wedding Events</li>
 				<li data-slide="4">Photos</li>
-				<li data-slide="5">Contact</li>
+        <li data-slide="5">Cruise Info</li>
+				<li data-slide="6">RSVP</li>
 			</ul>
 		</div>
 		<!-- Navigation Menu / End -->
@@ -151,7 +162,7 @@
 
 <!-- Wedding Events Subpage	   	  
 =========================================== -->	
-<section class="slide" id="wedding_events" data-slide="5">
+<section class="slide" id="wedding_events" data-slide="3">
   <div class="container">
       <div class="sixteen columns">
                 <!-- Wedding Events Subpage Title -->
@@ -293,17 +304,12 @@
                 <!-- Wedding Events Subpage Title -->
                 <h1 class="subpage_title">Cruise Information</h1>
                 <div class="wedding_events_info">
-                <ul>
-                  <li>Group Booking #6932559</li>
-                  <li>January 31st Airport Hotel:</li>
-                </ul>
+<!--                 <ul>
+                  <li>Group Booking </li>
+                </ul> -->
                 <div class="row"></div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <h5>Group Booking #6932559</h5>
+                  <p style="">Using the group booking number above you can book your stateroom by calling Royal Carribean at <em>1-800-465-3595</em> <strong>&nbsp;before May 24th, 2013</strong> in order to qualify for group benefits.  Also note this cruise falls on SuperBowl weekend - so book early!</p>
                 </div>
 	    </div>
       <div class="row"></div>
@@ -318,7 +324,7 @@
             <!-- Wedding Events Info -->         
             <div class="wedding_events_info">
                 <h3>February 1st 2014 @ 4:00 PM</h3>
-                <h3><small>Port Lauderdale</small></h3> 
+                <h3><small>Fort Lauderdale, Florida</small></h3> 
             <p>All aboard!</p>  
             </div>
 
@@ -348,7 +354,7 @@
             <!-- Wedding Events Info -->         
             <div class="wedding_events_info">
                 <h3>February 3rd, 2014</h3> 
-             <h3><small>Mexico</small></h3>
+             <h3><small>Belize City, Belize</small></h3>
             </div>      
       </div>
 
@@ -365,7 +371,7 @@
             <!-- Wedding Events Info -->         
             <div class="wedding_events_info">
                 <h3>February 4th, 2014</h3> 
-                <h3><small>Belize</small></h3>
+                <h3><small>Cozumel, Mexico</small></h3>
 
             </div>      
       </div>   
@@ -395,7 +401,7 @@
             <!-- Wedding Events Info -->         
             <div class="wedding_events_info">
           <h3>February 6th, 2014</h3>
-        <h3><small>Port Lauderdale</small></h3>  
+        <h3><small>Fort Lauderdale, Florida</small></h3>  
             </div>
                 
       </div>   
@@ -409,12 +415,12 @@
 	<div class="container"> 
 	    <div class="sixteen columns">
                 <!-- Contact Us Sabpage Title -->
-                <h1 class="subpage_title">Contact Us</h1>
+                <h1 class="subpage_title">RSVP</h1>
             </div>
         
 	    <div class="six columns offset-by-five">
                 <!-- Contact Form -->
-                <form id="contactform">
+                <form id="contactform" action="http://www.speg.com/rsvp.php" method="POST">
 	             <fieldset class="info_fieldset">
 			      <div id="note"></div>
                  </fieldset> 
@@ -424,13 +430,13 @@
 			           <input class="textbox" type="text" name="email" value="" /><br />
                  <div class="radiolabel">
                  	<input id="rsvp_yes" type="radio" name="rsvp" value="yes" />
-			         <label for="rsvp_yes">Yes please</label>
+			         <label for="rsvp_yes">I'm coming!</label>
                  </div>
                  <div class="radiolabel">
                  	<input id="rsvp_no" type="radio" name="rsvp" value="no" />
-                 	<label id="rrr" for="rsvp_no">No, throw me overboard</label>
+                 	<label id="rrr" for="rsvp_no">I stink</label>
                  </div>
-                 <label>YOUR MESSAGE*</label>
+                 <label>Message:</label>
 			           <textarea class="textbox" name="message" rows="5" cols="25" ></textarea><br />
 		               <input type="submit" value="Send Message" />
                 </form>
