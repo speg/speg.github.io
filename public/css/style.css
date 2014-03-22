@@ -24,15 +24,19 @@ section {
   font-size: 3em;
   width: 100%; }
 
-.feed {
+.perspective {
   perspective: 800px;
-  -webkit-perspective: 800px;
+  -webkit-perspective: 800px; }
+
+.plane {
+  transform: rotateX(35deg);
+  -webkit-transform: rotateX(35deg); }
+
+.feed {
   width: 40%;
   display: inline-block;
   vertical-align: top; }
   .feed > ul {
-    transform: rotateX(35deg);
-    -webkit-transform: rotateX(35deg);
     vertical-align: top;
     list-style-type: none; }
 
@@ -41,9 +45,11 @@ li {
   background-color: #333;
   border-radius: 4px;
   padding: 5px;
-  text-decoration: none; }
+  text-decoration: none;
+  word-wrap: break-word; }
 
 footer {
+  margin: 50px 0 10px 0;
   bottom: 0;
   width: 100%; }
 
