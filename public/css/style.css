@@ -29,8 +29,8 @@ section {
   -webkit-perspective: 800px; }
 
 .plane {
-  transform: rotateX(35deg);
-  -webkit-transform: rotateX(35deg); }
+  transform: rotateX(30deg);
+  -webkit-transform: rotateX(30deg); }
 
 .feed {
   width: 40%;
