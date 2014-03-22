@@ -6,9 +6,9 @@ $(function(){
         html = '';
         placement = function(index, value) {
             html += '<li><a href="https://twitter.com/speg/status/' + value.id_str;
-            html += '">' + value.text + '</a></li>';      
+            html += '">' + value.text + '</a></li>';
         };
         $.each(data, placement);
-        $('#tweets>ul').append(html);
-    }});    
+        $('div.tweets>ul').append(html);
+    }});
 });
