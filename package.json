@@ -16,6 +16,7 @@
   "dependencies": {
     "express": "~3.4.8",
     "jade": "~1.1.5",
-    "twitter-js-client": "0.0.5"
+    "twitter-js-client": "0.0.5",
+    "request": "^2.34.0"
   }
 }
