@@ -1,0 +1,20 @@
+{
+  "name": "speg.com",
+  "version": "0.0.0",
+  "description": "speg's personal home",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "speg",
+    "steve",
+    "hiemstra"
+  ],
+  "author": "steve hiemstra",
+  "license": "ISC",
+  "dependencies": {
+    "express": "~3.4.8",
+    "jade": "~1.1.5"
+  }
+}
