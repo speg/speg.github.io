@@ -61,7 +61,8 @@ header > img {
 
 img.social-icon {
   height: 25px;
-  padding-top: 10px; }
+  padding-top: 10px;
+  width: auto; }
 
 a, a:link {
   color: #aeb7bc;
