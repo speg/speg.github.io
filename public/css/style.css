@@ -12,7 +12,6 @@ body {
   background-color: #8b857e;
   margin: 0;
   color: white;
-  line-height: 4em;
   text-align: center;
   font-size: medium;
   font-weight: 300;
@@ -26,8 +25,23 @@ section {
   width: 100%; }
 
 .feed {
+  perspective: 800px;
+  -webkit-perspective: 800px;
   width: 40%;
-  display: inline-block; }
+  display: inline-block;
+  vertical-align: top; }
+  .feed > ul {
+    transform: rotateX(35deg);
+    -webkit-transform: rotateX(35deg);
+    vertical-align: top;
+    list-style-type: none; }
+
+li {
+  margin: 10px;
+  background-color: #333;
+  border-radius: 4px;
+  padding: 5px;
+  text-decoration: none; }
 
 footer {
   bottom: 0;
@@ -43,11 +57,6 @@ img.social-icon {
   height: 25px;
   padding-top: 10px; }
 
-#tweets > ul > li {
-  list-style-type: none;
-  display: inline;
-  font-size: 0.4em;
-  line-height: 1em; }
-
-a:-webkit-any-link {
-  color: #aeb7bc; }
+a, a:link {
+  color: #aeb7bc;
+  text-decoration: none; }

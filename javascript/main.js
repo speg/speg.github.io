@@ -5,8 +5,7 @@ $(function(){
         var placement, html;
         html = '';
         placement = function(index, value) {
-            html += '<li><a href="https://twitter.com/speg/status/' + value.id_str;
-            html += '">' + value.text + '</a></li>';
+            html = '<a href="https://twitter.com/speg/status/' + value.id_str + '"><li>' + value.text + '</li></a>' + html;
         };
         $.each(data, placement);
         $('div.tweets>ul').append(html);
