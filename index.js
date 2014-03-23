@@ -76,7 +76,7 @@ function parseCommits(body){
                 result.push({
                     type: 'commit',
                     title: c.message,
-                    url: c.url
+                    url: c.url.replace('https://api.github.com/repos/', 'https://github.com/').replace(/commits\/([0-9a-z]+)$/,'commit\/$1')
                 });
             });
         }
