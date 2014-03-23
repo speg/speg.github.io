@@ -1,7 +1,13 @@
 var request = require('request');
 var express = require('express');
+var redis = require('redis');
 var app = express();
 var twitter = require('./lib/twitter.js');
+var R = redis.createClient();
+
+R.on('error', function(error){
+    console.log("REDIS ERROR: ", error);
+});
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
@@ -20,8 +26,17 @@ app.get('/', function(req, res){
 
 app.get('/tweets/', function(req, res){
     var err = function(){res.send('[]')};
-    var suc = function(data){res.send(data)};
-    var tweets = twitter.getUserTimeline({count: 10}, err, suc);
+    var suc = function(data){
+        R.set('tweets', data, 'EX', 15 * 60);
+        res.send(data)
+    };
+    R.get('tweets', function(err, string){
+        if (err || !string){
+            twitter.getUserTimeline({count: 10}, err, suc);
+        } else {
+            res.send(string);            
+        }    
+    });
 });
 
 app.get('/commits/', function (req, res){
@@ -32,15 +47,21 @@ app.get('/commits/', function (req, res){
 function returnCommits(res){
     var GITHUB = process.env.GITHUB,
     GPASS = process.env.GPASS;
-
-    request({
-        url: GITHUB,
-        auth: {user: 'speg', pass: GPASS},
-        headers: {'User-Agent': 'npm requests'}
-    }, function(error, response, body){
-        var parsed = parseCommits(body);
-        res.send(parsed);
-    }); 
+    R.get('commits', function(err, string){
+       if (err || !string){     
+            request({
+                url: GITHUB,
+                auth: {user: 'speg', pass: GPASS},
+                headers: {'User-Agent': 'npm requests'}
+            }, function(error, response, body){
+                var parsed = parseCommits(body);
+                R.set('commits', JSON.stringify(parsed),'EX', 15 * 60);
+                res.send(parsed);
+            });
+       } else {
+           res.send(string); 
+       } 
+    });    
 };
 
 app.listen(3000);
@@ -50,7 +71,6 @@ function parseCommits(body){
     var obj = JSON.parse(body).slice(0, 20);
     var result = [];
     obj.forEach(function(o){
-        console.log(o);
         if (o.type === 'PushEvent' && o.payload.commits){
             o.payload.commits.forEach(function(c){
                 result.push({
