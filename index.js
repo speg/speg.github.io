@@ -79,7 +79,13 @@ function parseCommits(body){
                     url: c.url.replace('https://api.github.com/repos/', 'https://github.com/').replace(/commits\/([0-9a-z]+)$/,'commit\/$1')
                 });
             });
+        } else (o.type === 'IssueCommentEvent' && o.payload.comment && o.payload.comment.body){
+            result.push({
+                type: 'comment',
+                title: o.payload.comment.body,
+                url: o.payload.comment.html_url || ''
+            });
         }
     });
-    return result.slice(0, 10);
+    return result.slice(0, 13);
 }
